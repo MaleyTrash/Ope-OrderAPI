@@ -5,9 +5,11 @@ import {
   ParseIntPipe,
   Post,
   Body,
+  Patch,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
 import { OrderCreateDto } from './dto/order-create.dto';
+import { OrderEditDto } from './dto/order-edit.dto';
 
 @Controller('orders')
 export class OrdersController {
@@ -26,5 +28,13 @@ export class OrdersController {
   @Post('/')
   public async create(@Body() orderCreateDto: OrderCreateDto) {
     return await this.service.create(orderCreateDto);
+  }
+
+  @Patch('/:id')
+  public async patchOneById(
+    @Param('id', new ParseIntPipe()) id: number,
+    @Body() orderEditDto: OrderEditDto,
+  ) {
+    return await this.service.updateOneById(id, orderEditDto);
   }
 }
