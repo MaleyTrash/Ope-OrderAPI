@@ -7,9 +7,11 @@ import {
   Body,
   Delete,
   HttpCode,
+  Patch,
 } from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { ItemCreateDto } from './dto/item-create.dto';
+import { ItemEditDto } from './dto/item-edit.dto';
 
 @Controller('items')
 export class ItemsController {
@@ -34,5 +36,13 @@ export class ItemsController {
   @HttpCode(204)
   public async deleteOneById(@Param('id', new ParseIntPipe()) id: number) {
     return await this.service.deleteOneById(id);
+  }
+  
+  @Patch('/:id')
+  public async patchOneById(
+    @Param('id', new ParseIntPipe()) id: number,
+    @Body() itemEditDto: ItemEditDto,
+  ) {
+    return await this.service.updateOneById(id, itemEditDto);
   }
 }
