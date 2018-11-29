@@ -1,4 +1,13 @@
-import { Controller, Get, Param, ParseIntPipe, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+  Body,
+  Delete,
+  HttpCode,
+} from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { ItemCreateDto } from './dto/item-create.dto';
 
@@ -19,5 +28,11 @@ export class ItemsController {
   @Post('/')
   public async create(@Body() itemCreateDto: ItemCreateDto) {
     return await this.service.create(itemCreateDto);
+  }
+
+  @Delete('/:id')
+  @HttpCode(204)
+  public async deleteOneById(@Param('id', new ParseIntPipe()) id: number) {
+    return await this.service.deleteOneById(id);
   }
 }

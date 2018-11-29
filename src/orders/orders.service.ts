@@ -19,10 +19,12 @@ export class OrdersService {
     return await this.repo.find({ relations: ['items', 'customer'] });
   }
 
-  public async getOneById(id: number) {
+  public async getOneById(id: number, withRelations: boolean = true) {
+    const relations = withRelations ? ['items', 'customer'] : [];
+
     return await this.repo.findOne({
       where: { id },
-      relations: ['items', 'customer'],
+      relations,
     });
   }
 
@@ -41,5 +43,11 @@ export class OrdersService {
     item.customer = customer;
 
     return await this.repo.save(item);
+  }
+
+  public async deleteOneById(id: number): Promise<void> {
+    const item = await this.getOneById(id, false);
+
+    await this.repo.delete(item);
   }
 }

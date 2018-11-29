@@ -5,6 +5,8 @@ import {
   ParseIntPipe,
   Post,
   Body,
+  Delete,
+  HttpCode,
 } from '@nestjs/common';
 import { CustomersService } from './customers.service';
 import { CustomerCreateDto } from './dto/customer-create.dto';
@@ -26,5 +28,11 @@ export class CustomersController {
   @Post('/')
   public async create(@Body() customerCreateDto: CustomerCreateDto) {
     return await this.service.create(customerCreateDto);
+  }
+
+  @Delete('/:id')
+  @HttpCode(204)
+  public async deleteOneById(@Param('id', new ParseIntPipe()) id: number) {
+    return await this.service.deleteOneById(id);
   }
 }
