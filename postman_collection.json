@@ -82,7 +82,7 @@
 			"response": []
 		},
 		{
-			"name": "Edit copy",
+			"name": "Edit item",
 			"request": {
 				"method": "PATCH",
 				"header": [
@@ -112,6 +112,26 @@
 			"response": []
 		},
 		{
+			"name": "Delete item",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/items/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"items",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Get customers",
 			"request": {
 				"method": "GET",
@@ -121,13 +141,13 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "localhost:3000/items/",
+					"raw": "localhost:3000/customers/",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
-						"items",
+						"customers",
 						""
 					]
 				}
@@ -211,6 +231,26 @@
 					"path": [
 						"customers",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete customer",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/customers/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"customers",
+						"3"
 					]
 				}
 			},
@@ -316,6 +356,26 @@
 					"path": [
 						"orders",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete order",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:3000/orders/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"orders",
+						"3"
 					]
 				}
 			},
