@@ -52,4 +52,10 @@ export class ItemsService {
 
     return await this.repo.save(item);
   }
+
+  public async deleteOneById(id: number): Promise<void> {
+    const item = await this.getOneById(id);
+
+    await this.repo.delete(item);
+  }
 }

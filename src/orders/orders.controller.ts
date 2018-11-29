@@ -5,6 +5,8 @@ import {
   ParseIntPipe,
   Post,
   Body,
+  Delete,
+  HttpCode,
   Patch,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
@@ -29,7 +31,13 @@ export class OrdersController {
   public async create(@Body() orderCreateDto: OrderCreateDto) {
     return await this.service.create(orderCreateDto);
   }
-
+  
+  @Delete('/:id')
+  @HttpCode(204)
+  public async deleteOneById(@Param('id', new ParseIntPipe()) id: number) {
+    return await this.service.deleteOneById(id);
+  }
+  
   @Patch('/:id')
   public async patchOneById(
     @Param('id', new ParseIntPipe()) id: number,
