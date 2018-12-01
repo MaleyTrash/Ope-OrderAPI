@@ -10,7 +10,7 @@ import { OrdersModule } from './orders/orders.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: process.env.MYSQL_HOST || 'localhost',
       port: 3306,
       username: 'root',
       password: 'root',

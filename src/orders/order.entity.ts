@@ -6,8 +6,8 @@ import {
   JoinTable,
   Column,
 } from 'typeorm';
-import { Customer } from 'customers/customer.entity';
-import { Item } from 'items/item.entity';
+import { Customer } from '../customers/customer.entity';
+import { Item } from '../items/item.entity';
 
 @Entity()
 export class Order {
