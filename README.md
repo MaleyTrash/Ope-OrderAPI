@@ -26,6 +26,8 @@ $ npm run start:prod
 ## Deploying with Docker
 
 ```bash
+# build Dockerfile
+$ ./docker-manage.sh build
 # create containers
 $ ./docker-manage.sh create <NAME> <BIND_PORT>
 
