@@ -11,6 +11,7 @@ async function bootstrap() {
     .setTitle('Order API')
     .setDescription('')
     .setVersion('1.0')
+    .setSchemes('https', 'http')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('docs', app, document);
