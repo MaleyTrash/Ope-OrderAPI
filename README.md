@@ -27,11 +27,11 @@ $ npm run start:prod
 
 ```bash
 # create containers
- $ ./docker-manage.sh create <NAME> <BIND_PORT>
+$ ./docker-manage.sh create <NAME> <BIND_PORT>
 
 # start containers
- $ ./docker-manage.sh start <NAME>
+$ ./docker-manage.sh start <NAME>
 
 # remove containers
- $ ./docker-manage.sh rm <NAME>
+$ ./docker-manage.sh rm <NAME>
 ```
