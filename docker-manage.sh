@@ -5,6 +5,9 @@ DB_CONTAINER_NAME="order-$2-mysql"
 API_CONTAINER_NAME="order-$2-api"
 
 case $1 in
+    "build")
+        docker build --rm -f "Dockerfile" -t order_api:latest .
+        ;;
     "create")
         docker network create $NETWORK_NAME
 
@@ -22,6 +25,6 @@ case $1 in
         docker network rm $NETWORK_NAME
         ;;
     *)
-        printf "USAGE: \tcreate <name> <bind_port>\n\tstart <name>\n\trm <name>\n"
+        printf "USAGE: \tbuild\n\tcreate <name> <bind_port>\n\tstart <name>\n\trm <name>\n"
         ;;
 esac
