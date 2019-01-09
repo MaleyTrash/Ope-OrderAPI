@@ -7,6 +7,7 @@ export class CustomerFactory {
 
     ret.firstName = customerCreateDto.firstName;
     ret.lastName = customerCreateDto.lastName;
+    ret.password = customerCreateDto.password;
 
     return ret;
   }

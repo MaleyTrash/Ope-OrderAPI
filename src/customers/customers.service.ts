@@ -1,10 +1,12 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
 import { Repository } from 'typeorm';
 import { Customer } from './customer.entity';
 import { CustomerCreateDto } from './dto/customer-create.dto';
 import { CustomerFactory } from './customer.factory';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CustomerEditDto } from './dto/customer-edit.dto';
+import { CustomerLoginDto } from './dto/customer-login.dto';
+import { doesNotReject } from 'assert';
 
 @Injectable()
 export class CustomersService {
@@ -23,6 +25,14 @@ export class CustomersService {
     if (!customer) throw new NotFoundException('Customer not found');
 
     return customer;
+  }
+
+  public async login(dto: CustomerLoginDto): Promise<Customer> {
+    const item = await this.repo.findOne({ where: dto });
+
+    if (!item) throw new UnauthorizedException('Invalid login');
+
+    return item;
   }
 
   public async updateOneById(id: number, dto: CustomerEditDto) {

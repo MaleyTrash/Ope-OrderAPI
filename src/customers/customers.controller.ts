@@ -13,6 +13,7 @@ import { CustomersService } from './customers.service';
 import { CustomerCreateDto } from './dto/customer-create.dto';
 import { CustomerEditDto } from './dto/customer-edit.dto';
 import { ApiUseTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { CustomerLoginDto } from './dto/customer-login.dto';
 
 @ApiUseTags('customers')
 @Controller('customers')
@@ -35,6 +36,14 @@ export class CustomersController {
   @Post('/')
   public async create(@Body() customerCreateDto: CustomerCreateDto) {
     return await this.service.create(customerCreateDto);
+  }
+
+  @ApiOperation({ title: 'Tries to log in customer' })
+  @ApiResponse({status: 200, description: 'Customer data'})
+  @ApiResponse({status: 401, description: 'Invalid login'})
+  @Post('/login')
+  public async login(@Body() customerLoginDto: CustomerLoginDto) {
+    return await this.service.login(customerLoginDto);
   }
 
   @ApiOperation({ title: 'Deletes customer by id' })

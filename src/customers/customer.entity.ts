@@ -12,6 +12,9 @@ export class Customer {
   @Column({ length: 30 })
   lastName: string;
 
+  @Column({ length: 30 })
+  password: string;
+
   @OneToMany(type => Order, order => order.customer)
   orders: Order[];
 }

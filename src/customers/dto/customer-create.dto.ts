@@ -11,4 +11,9 @@ export class CustomerCreateDto {
   @IsString()
   @MaxLength(30)
   lastName: string;
+
+  @ApiModelProperty()
+  @IsString()
+  @MaxLength(30)
+  password: string;
 }
