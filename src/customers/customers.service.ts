@@ -6,7 +6,6 @@ import { CustomerFactory } from './customer.factory';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CustomerEditDto } from './dto/customer-edit.dto';
 import { CustomerLoginDto } from './dto/customer-login.dto';
-import { doesNotReject } from 'assert';
 
 @Injectable()
 export class CustomersService {
@@ -42,6 +41,7 @@ export class CustomersService {
 
     item.firstName = dto.firstName || item.firstName;
     item.lastName = dto.lastName || item.lastName;
+    item.password = dto.password || item.password;
 
     return await this.repo.save(item);
   }

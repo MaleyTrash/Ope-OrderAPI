@@ -13,4 +13,10 @@ export class CustomerEditDto {
   @IsString()
   @MaxLength(30)
   lastName?: string;
+
+  @ApiModelProperty({required: false})
+  @IsOptional()
+  @IsString()
+  @MaxLength(30)
+  password?: string;
 }
